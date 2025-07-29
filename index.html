@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Rutina Athletic Gym - Matrix Equipment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tu Rutina Athletic Gym - Matrix Equipment</h1>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openDay(event, 'Day1')" id="defaultOpen">Día 1: Pecho & Tríceps</button>
+            <button class="tablinks" onclick="openDay(event, 'Day2')">Día 2: Piernas & Glúteos</button>
+            <button class="tablinks" onclick="openDay(event, 'Day3')">Día 3: Espalda & Bíceps</button>
+            <button class="tablinks" onclick="openDay(event, 'Day4')">Día 4: Cardio & Core</button>
+            <button class="tablinks" onclick="openDay(event, 'Day5')">Día 5: Full Body & HIIT</button>
+            <button class="tablinks" onclick="openDay(event, 'WeightTracker')">Control de Peso</button>
+        </div>
+
+        <!-- Modal para imágenes -->
+        <div id="imageModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img id="modalImage" class="modal-image" src="" alt="">
+                <div id="modalInfo" class="modal-exercise-info">
+                    <div class="modal-info-card">
+                        <h4>Información del Ejercicio</h4>
+                        <p id="modalDescription"></p>
+                    </div>
+                    <div class="modal-info-card">
+                        <h4>Consejos de Técnica</h4>
+                        <ul id="modalTips"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Day1" class="tabcontent">
+            <h2>Día 1: Pecho & Tríceps (Énfasis en Fuerza y Volumen)</h2>
+            <h3>Calentamiento (5-10 minutos):</h3>
+            <ul>
+                <li>Caminadora Matrix - 5 minutos de caminata a paso ligero o trote suave.</li>
+                <li>Rotaciones amplias de brazos hacia adelante y hacia atrás.</li>
+                <li>Estiramientos dinámicos ligeros para pecho y hombros.</li>
+            </ul>
+            <h3>Rutina Principal:</h3>
+            <div class="exercise">
+                <h4>1. Press de Pecho en Máquina Matrix - 4 series de 8-12 repeticiones</h4>
+                <img src="/imagenes/1.1.png" alt="Press de Pecho Matrix" class="exercise-image" onclick="openImageModal(this, 'Press de Pecho en Máquina Matrix', 'Ejercicio principal para desarrollo del pecho utilizando la máquina Matrix Chest Press.', ['Ajusta el asiento correctamente', 'Mantén los omóplatos retraídos', 'Controla el movimiento en ambas fases', 'Respira correctamente durante el ejercicio'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Chest Press | Enfoque: Pecho (General)</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="5" placeholder="0" onchange="saveExerciseWeight('matrix_chest_press', this.value)">
+                    <span class="weight-history" id="matrix_chest_press_history"></span>
+                </div>
+                <p>Ajusta el asiento para que las manijas estén a la altura media de tu pecho. Empuja con fuerza, sintiendo la contracción en el pecho, y controla el retorno lento del peso.</p>
+            </div>
+            <div class="exercise">
+                <h4>2. Press Inclinado en Máquina Matrix - 3 series de 10-15 repeticiones</h4>
+                <img src="/imagenes/1.2.png" alt="Press Inclinado Matrix" class="exercise-image" onclick="openImageModal(this, 'Press Inclinado en Máquina Matrix', 'Ejercicio para la parte superior del pecho con énfasis en los músculos pectorales altos.', ['Configura el ángulo de inclinación adecuado', 'Mantén los pies firmes en el suelo', 'Evita arquear excesivamente la espalda', 'Concentra la tensión en el pecho superior'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Incline Press | Enfoque: Pecho Superior</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="5" placeholder="0" onchange="saveExerciseWeight('matrix_incline_press', this.value)">
+                    <span class="weight-history" id="matrix_incline_press_history"></span>
+                </div>
+                <p>Configura el respaldo para un ángulo de inclinación moderado. Concéntrate en activar la parte superior del pecho al empujar.</p>
+            </div>
+            <div class="exercise">
+                <h4>3. Fondos Asistidos Matrix - 3 series al fallo (o 8-12 repeticiones)</h4>
+                <img src="/imagenes/1.3.png" alt="Fondos Asistidos Matrix" class="exercise-image" onclick="openImageModal(this, 'Fondos Asistidos Matrix', 'Ejercicio compuesto para tríceps y pecho inferior con asistencia ajustable.', ['Ajusta la asistencia según tu nivel', 'Baja hasta que los hombros estén por debajo de los codos', 'Mantén el core activado', 'Progresa reduciendo gradualmente la asistencia'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Assisted Dip | Enfoque: Tríceps y Pecho Inferior</div>
+                <div class="weight-control">
+                    <label>Asistencia (kg): </label>
+                    <input type="number" step="5" placeholder="0" onchange="saveExerciseWeight('matrix_assisted_dip', this.value)">
+                    <span class="weight-history" id="matrix_assisted_dip_history"></span>
+                </div>
+                <p>Usa la asistencia necesaria para completar las repeticiones con buena forma. Baja hasta que tus hombros estén por debajo de tus codos y empuja con fuerza para subir.</p>
+            </div>
+            <div class="exercise">
+                <h4>4. Extensión de Tríceps en Máquina Matrix - 3 series de 12-15 repeticiones</h4>
+                <img src="/imagenes/1.4.png" alt="Extensión Tríceps Matrix" class="exercise-image" onclick="openImageModal(this, 'Extensión de Tríceps en Máquina Matrix', 'Ejercicio de aislamiento específico para el desarrollo de los músculos tríceps.', ['Mantén los codos fijos durante el movimiento', 'Extiende completamente el brazo', 'Controla la fase excéntrica', 'Evita usar impulso'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Tricep Extension | Enfoque: Aislamiento de Tríceps</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="2.5" placeholder="0" onchange="saveExerciseWeight('matrix_tricep_ext', this.value)">
+                    <span class="weight-history" id="matrix_tricep_ext_history"></span>
+                </div>
+                <p>Mantén los codos fijos y pegados al cuerpo. Extiende completamente el brazo contrayendo el tríceps, y controla el movimiento de vuelta.</p>
+            </div>
+            <div class="exercise">
+                <h4>5. Apertura de Pecho en Máquina (Pec Deck) Matrix - 3 series de 15-20 repeticiones</h4>
+                <img src="/imagenes/1.5.png" alt="Pec Deck Matrix" class="exercise-image" onclick="openImageModal(this, 'Apertura de Pecho (Pec Deck) Matrix', 'Ejercicio de aislamiento para pecho con énfasis en la contracción y estiramiento.', ['Ajusta la altura del asiento correctamente', 'Mantén los codos ligeramente flexionados', 'Concéntrate en el estiramiento completo', 'Aprieta fuertemente en la contracción máxima'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Pec Deck/Fly | Enfoque: Aislamiento de Pecho y Contracción</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="2.5" placeholder="0" onchange="saveExerciseWeight('matrix_pec_deck', this.value)">
+                    <span class="weight-history" id="matrix_pec_deck_history"></span>
+                </div>
+                <p>Mantén los codos ligeramente flexionados. Concéntrate en el estiramiento completo al abrir y en la máxima contracción del pecho al cerrar las palancas.</p>
+            </div>
+            <h3>Enfriamiento (5-10 minutos):</h3>
+            <p>Estiramientos estáticos para pecho, hombros y tríceps. Sostén cada estiramiento por 20-30 segundos.</p>
+            <div class="check-container">
+                <span class="check-label">Completado:</span>
+                <div class="check-box" onclick="toggleCheck(this, 1)"></div>
+            </div>
+        </div>
+
+        <div id="Day2" class="tabcontent">
+            <h2>Día 2: Piernas & Glúteos (Énfasis en Fuerza y Volumen)</h2>
+            <h3>Calentamiento (5-10 minutos):</h3>
+            <ul>
+                <li>Bicicleta Estática Matrix - 5 minutos a resistencia moderada.</li>
+                <li>Movilidad de cadera (círculos con las piernas, balanceos).</li>
+                <li>Activación de glúteos (ej. puentes de glúteo sin peso en el suelo).</li>
+            </ul>
+            <h3>Rutina Principal:</h3>
+            <div class="exercise">
+                <h4>1. Prensa de Piernas Matrix - 4 series de 10-15 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/00ffff?text=Prensa+Piernas+Matrix" alt="Prensa Piernas Matrix" class="exercise-image" onclick="openImageModal(this, 'Prensa de Piernas Matrix', 'Ejercicio compuesto fundamental para el desarrollo de cuádriceps, glúteos e isquiotibiales.', ['Posiciona los pies al ancho de hombros', 'Baja hasta 90 grados en las rodillas', 'Empuja con los talones', 'No bloquees completamente las rodillas'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Leg Press | Enfoque: Cuádriceps, Isquiotibiales, Glúteos</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="10" placeholder="0" onchange="saveExerciseWeight('matrix_leg_press', this.value)">
+                    <span class="weight-history" id="matrix_leg_press_history"></span>
+                </div>
+                <p>Coloca los pies al ancho de los hombros, baja la plataforma hasta que tus rodillas formen un ángulo de 90 grados. Empuja con los talones, extendiendo las piernas sin bloquear las rodillas.</p>
+            </div>
+            <div class="exercise">
+                <h4>2. Extensión de Cuádriceps Matrix - 3 series de 12-15 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff3e3e?text=Extension+Cuadriceps+Matrix" alt="Extensión Cuádriceps Matrix" class="exercise-image" onclick="openImageModal(this, 'Extensión de Cuádriceps Matrix', 'Ejercicio de aislamiento específico para el desarrollo de los músculos cuádriceps.', ['Ajusta el respaldo y la almohadilla', 'Extiende completamente las piernas', 'Pausa 1 segundo en la contracción máxima', 'Controla la bajada del peso'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Leg Extension | Enfoque: Cuádriceps (Aislamiento)</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="5" placeholder="0" onchange="saveExerciseWeight('matrix_leg_extension', this.value)">
+                    <span class="weight-history" id="matrix_leg_extension_history"></span>
+                </div>
+                <p>Extiende las piernas completamente y haz una pausa de 1 segundo en la parte superior, contrayendo fuertemente los cuádriceps. Baja el peso de forma controlada.</p>
+            </div>
+            <div class="exercise">
+                <h4>3. Curl Femoral Matrix - 3 series de 12-15 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff8c00?text=Curl+Femoral+Matrix" alt="Curl Femoral Matrix" class="exercise-image" onclick="openImageModal(this, 'Curl Femoral Matrix', 'Ejercicio de aislamiento para el desarrollo de los músculos isquiotibiales.', ['Ajusta la máquina a tu altura', 'Mantén las caderas pegadas al asiento', 'Flexiona con fuerza los isquiotibiales', 'Controla tanto la subida como la bajada'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Leg Curl | Enfoque: Isquiotibiales (Aislamiento)</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="5" placeholder="0" onchange="saveExerciseWeight('matrix_leg_curl', this.value)">
+                    <span class="weight-history" id="matrix_leg_curl_history"></span>
+                </div>
+                <p>Flexiona las piernas con fuerza, sintiendo la contracción en los isquiotibiales. Controla el movimiento tanto al subir como al bajar el peso.</p>
+            </div>
+            <div class="exercise">
+                <h4>4. Abducción de Cadera Matrix - 3 series de 15-20 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/00ffff?text=Abduccion+Cadera+Matrix" alt="Abducción Cadera Matrix" class="exercise-image" onclick="openImageModal(this, 'Abducción de Cadera Matrix', 'Ejercicio específico para el fortalecimiento del glúteo medio y menor.', ['Mantén la espalda recta durante el ejercicio', 'Abre las piernas lo máximo posible', 'Haz una pausa en la apertura máxima', 'Siente la activación en los glúteos laterales'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Hip Abduction | Enfoque: Glúteo Medio y Menor</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="2.5" placeholder="0" onchange="saveExerciseWeight('matrix_hip_abduction', this.value)">
+                    <span class="weight-history" id="matrix_hip_abduction_history"></span>
+                </div>
+                <p>Mantén la espalda recta y las caderas fijas. Abre las piernas lo más que puedas, sintiendo la activación en la parte lateral de tus glúteos.</p>
+            </div>
+            <div class="exercise">
+                <h4>5. Aducción de Cadera Matrix - 3 series de 15-20 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff3e3e?text=Aduccion+Cadera+Matrix" alt="Aducción Cadera Matrix" class="exercise-image" onclick="openImageModal(this, 'Aducción de Cadera Matrix', 'Ejercicio para fortalecer los músculos aductores de la parte interna del muslo.', ['Posiciona correctamente las piernas', 'Junta las piernas con control', 'Contrae la parte interna del muslo', 'Mantén un movimiento fluido'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Hip Adduction | Enfoque: Aductores (Parte Interna del Muslo)</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="2.5" placeholder="0" onchange="saveExerciseWeight('matrix_hip_adduction', this.value)">
+                    <span class="weight-history" id="matrix_hip_adduction_history"></span>
+                </div>
+                <p>Junta las piernas contrayendo la cara interna de los muslos. Realiza el movimiento de forma controlada y concéntrica.</p>
+            </div>
+            <div class="exercise">
+                <h4>6. Elevación de Pantorrillas Matrix - 3 series de 15-25 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff8c00?text=Elevacion+Pantorrillas+Matrix" alt="Elevación Pantorrillas Matrix" class="exercise-image" onclick="openImageModal(this, 'Elevación de Pantorrillas Matrix', 'Ejercicio específico para el desarrollo de los músculos de la pantorrilla.', ['Realiza rango completo de movimiento', 'Estira completamente abajo', 'Elévate lo más alto posible', 'Pausa 1-2 segundos en la contracción'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Calf Raise | Enfoque: Pantorrillas</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="5" placeholder="0" onchange="saveExerciseWeight('matrix_calf_raise', this.value)">
+                    <span class="weight-history" id="matrix_calf_raise_history"></span>
+                </div>
+                <p>Realiza un rango completo de movimiento, estirando completamente las pantorrillas abajo y elevándote lo más alto posible sobre las puntas de los pies.</p>
+            </div>
+            <h3>Enfriamiento (5-10 minutos):</h3>
+            <p>Estiramientos estáticos para cuádriceps, isquiotibiales, glúteos y pantorrillas. Mantén cada estiramiento por 20-30 segundos.</p>
+            <div class="check-container">
+                <span class="check-label">Completado:</span>
+                <div class="check-box" onclick="toggleCheck(this, 2)"></div>
+            </div>
+        </div>
+
+        <div id="Day3" class="tabcontent">
+            <h2>Día 3: Espalda & Bíceps (Énfasis en Fuerza y Amplitud)</h2>
+            <h3>Calentamiento (5-10 minutos):</h3>
+            <ul>
+                <li>Remo en Máquina Matrix - 5 minutos a ritmo suave, enfocándose en la retracción escapular.</li>
+                <li>Rotaciones de hombros hacia adelante y hacia atrás.</li>
+                <li>Estiramientos dinámicos ligeros para espalda.</li>
+            </ul>
+            <h3>Rutina Principal:</h3>
+            <div class="exercise">
+                <h4>1. Jalón al Pecho Matrix - 4 series de 8-12 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/00ffff?text=Jalon+Pecho+Matrix" alt="Jalón Pecho Matrix" class="exercise-image" onclick="openImageModal(this, 'Jalón al Pecho Matrix', 'Ejercicio fundamental para el desarrollo de la amplitud de la espalda, enfocado en dorsales.', ['Usa un agarre más ancho que los hombros', 'Tira hacia la parte superior del pecho', 'Siente la contracción en los dorsales', 'Controla el movimiento de retorno'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Lat Pulldown | Enfoque: Dorsales (Amplitud de Espalda)</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="5" placeholder="0" onchange="saveExerciseWeight('matrix_lat_pulldown', this.value)">
+                    <span class="weight-history" id="matrix_lat_pulldown_history"></span>
+                </div>
+                <p>Agarre más ancho que los hombros. Tira la barra hacia la parte superior de tu pecho, sintiendo la contracción en los dorsales.</p>
+            </div>
+            <div class="exercise">
+                <h4>2. Remo Sentado Matrix - 3 series de 10-15 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff3e3e?text=Remo+Sentado+Matrix" alt="Remo Sentado Matrix" class="exercise-image" onclick="openImageModal(this, 'Remo Sentado Matrix', 'Ejercicio para desarrollar el grosor de la espalda media y mejorar la postura.', ['Mantén el pecho erguido', 'Hombros hacia atrás', 'Tira hacia el abdomen', 'Aprieta los omóplatos al final'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Seated Row | Enfoque: Espalda Media (Grosor)</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="5" placeholder="0" onchange="saveExerciseWeight('matrix_seated_row', this.value)">
+                    <span class="weight-history" id="matrix_seated_row_history"></span>
+                </div>
+                <p>Mantén el pecho erguido y los hombros hacia atrás. Tira el agarre hacia tu abdomen, apretando los omóplatos al final del movimiento.</p>
+            </div>
+            <div class="exercise">
+                <h4>3. Pullover Matrix - 3 series de 12-15 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff8c00?text=Pullover+Matrix" alt="Pullover Matrix" class="exercise-image" onclick="openImageModal(this, 'Pullover Matrix', 'Ejercicio específico para dorsales y serratos, mejora la expansión de la caja torácica.', ['Movimiento amplio y controlado', 'Enfócate en el estiramiento completo', 'Contrae fuertemente al bajar', 'Mantén el core activado'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Pullover | Enfoque: Dorsales y Serratos</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="2.5" placeholder="0" onchange="saveExerciseWeight('matrix_pullover', this.value)">
+                    <span class="weight-history" id="matrix_pullover_history"></span>
+                </div>
+                <p>Realiza un movimiento amplio y controlado, enfocándote en el estiramiento completo de los dorsales en la parte superior.</p>
+            </div>
+            <div class="exercise">
+                <h4>4. Curl de Bíceps Matrix - 3 series de 12-15 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/00ffff?text=Curl+Biceps+Matrix" alt="Curl Bíceps Matrix" class="exercise-image" onclick="openImageModal(this, 'Curl de Bíceps Matrix', 'Ejercicio de aislamiento específico para el desarrollo de los músculos bíceps.', ['Mantén los codos fijos', 'Contrae el bíceps al máximo', 'Baja controladamente', 'Evita usar impulso'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Bicep Curl | Enfoque: Aislamiento de Bíceps</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="2.5" placeholder="0" onchange="saveExerciseWeight('matrix_bicep_curl', this.value)">
+                    <span class="weight-history" id="matrix_bicep_curl_history"></span>
+                </div>
+                <p>Mantén los codos fijos. Contrae el bíceps al máximo en la parte superior y baja el peso de forma controlada.</p>
+            </div>
+            <div class="exercise">
+                <h4>5. Face Pulls con Cable Matrix - 3 series de 15-20 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff3e3e?text=Face+Pulls+Matrix" alt="Face Pulls Matrix" class="exercise-image" onclick="openImageModal(this, 'Face Pulls con Cable Matrix', 'Ejercicio correctivo para deltoides posterior y romboides, esencial para la postura.', ['Usa cuerda o agarre doble', 'Tira hacia la cara', 'Separa las manos', 'Contrae músculos entre omóplatos'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Cable Station | Enfoque: Deltoides Posterior y Romboides</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="2.5" placeholder="0" onchange="saveExerciseWeight('matrix_face_pulls', this.value)">
+                    <span class="weight-history" id="matrix_face_pulls_history"></span>
+                </div>
+                <p>Usa una cuerda o agarre doble en la polea alta. Tira el cable hacia tu cara, separando las manos y contrayendo los músculos entre tus omóplatos.</p>
+            </div>
+            <h3>Enfriamiento (5-10 minutos):</h3>
+            <p>Estiramientos estáticos para espalda (dorsales, romboides) y bíceps. Mantén cada estiramiento por 20-30 segundos.</p>
+            <div class="check-container">
+                <span class="check-label">Completado:</span>
+                <div class="check-box" onclick="toggleCheck(this, 3)"></div>
+            </div>
+        </div>
+
+        <div id="Day4" class="tabcontent">
+            <h2>Día 4: Cardio de Quema de Grasa & Core</h2>
+            <h3>Cardio Principal (30-40 minutos):</h3>
+            <div class="exercise">
+                <h4>1. Caminadora Matrix - HIIT - 25 minutos</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff8c00?text=Caminadora+HIIT+Matrix" alt="Caminadora HIIT Matrix" class="exercise-image" onclick="openImageModal(this, 'Caminadora Matrix - HIIT', 'Entrenamiento de intervalos de alta intensidad para máxima quema de grasa.', ['Calentamiento: 5 min caminata rápida', 'Intervalos: 1 min sprint + 2 min recuperación', 'Repite 7 veces', 'Enfriamiento: 5 min caminata suave'])">
+                <div class="machine-info">🏃‍♂️ Máquina: Matrix Treadmill | Enfoque: Quema de Grasa y Resistencia</div>
+                <div class="weight-control">
+                    <label>Velocidad máx (km/h): </label>
+                    <input type="number" step="0.5" placeholder="0" onchange="saveExerciseWeight('matrix_treadmill', this.value)">
+                    <span class="weight-history" id="matrix_treadmill_history"></span>
+                </div>
+                <p>**Calentamiento:** 5 min de caminata rápida. **Intervalos (20 min):** 1 min de sprint seguido de 2 min de caminata de recuperación. Repetir 7 veces.</p>
+            </div>
+            <div class="exercise">
+                <h4>2. Elíptica Matrix - Steady State - 15 minutos</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/00ffff?text=Eliptica+Matrix+Steady" alt="Elíptica Matrix" class="exercise-image" onclick="openImageModal(this, 'Elíptica Matrix - Steady State', 'Cardio de estado estable para resistencia cardiovascular y quema de calorías.', ['Mantén ritmo constante', 'Usa brazos y piernas coordinadamente', 'Resistencia desafiante pero sostenible', 'Mantén postura erguida'])">
+                <div class="machine-info">🚴‍♂️ Máquina: Matrix Elliptical | Enfoque: Resistencia Cardiovascular</div>
+                <div class="weight-control">
+                    <label>Nivel resistencia: </label>
+                    <input type="number" max="20" placeholder="0" onchange="saveExerciseWeight('matrix_elliptical', this.value)">
+                    <span class="weight-history" id="matrix_elliptical_history"></span>
+                </div>
+                <p>Mantén un ritmo constante y una resistencia que te desafíe pero te permita mantener una conversación.</p>
+            </div>
+            <h3>Rutina de Core (15-20 minutos):</h3>
+            <div class="exercise">
+                <h4>3. Crunch Abdominal Matrix - 3 series de 15-20 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff3e3e?text=Crunch+Abdominal+Matrix" alt="Crunch Matrix" class="exercise-image" onclick="openImageModal(this, 'Crunch Abdominal Matrix', 'Ejercicio dirigido para el fortalecimiento del abdomen superior.', ['Contracción lenta y controlada', 'Siente el trabajo en el abdomen', 'Evita usar impulso', 'Mantén la tensión constante'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Ab Crunch | Enfoque: Abdomen Superior</div>
+                <div class="weight-control">
+                    <label>Peso (placa/kg): </label>
+                    <input type="number" step="2.5" placeholder="0" onchange="saveExerciseWeight('matrix_ab_crunch', this.value)">
+                    <span class="weight-history" id="matrix_ab_crunch_history"></span>
+                </div>
+                <p>Realiza la contracción abdominal de forma lenta y controlada, sintiendo el trabajo en tu abdomen.</p>
+            </div>
+            <div class="exercise">
+                <h4>4. Elevaciones de Rodillas Matrix - 3 series de 12-18 repeticiones</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff8c00?text=Elevaciones+Rodillas+Matrix" alt="Elevaciones Rodillas Matrix" class="exercise-image" onclick="openImageModal(this, 'Elevaciones de Rodillas Matrix', 'Ejercicio específico para el fortalecimiento del abdomen inferior.', ['Apoya bien los antebrazos', 'Eleva rodillas hacia el pecho', 'Contrae abdomen inferior', 'Baja controladamente'])">
+                <div class="machine-info">🏋️ Máquina: Matrix Knee Raise | Enfoque: Abdomen Inferior</div>
+                <div class="weight-control">
+                    <label>Repeticiones logradas: </label>
+                    <input type="number" placeholder="0" onchange="saveExerciseWeight('matrix_knee_raise', this.value)">
+                    <span class="weight-history" id="matrix_knee_raise_history"></span>
+                </div>
+                <p>Apoya los antebrazos en los soportes y eleva las rodillas hacia tu pecho, contrayendo el abdomen inferior.</p>
+            </div>
+            <div class="exercise">
+                <h4>5. Plancha en Suelo - 3 series de 45-60 segundos</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/00ffff?text=Plancha+Suelo" alt="Plancha Suelo" class="exercise-image" onclick="openImageModal(this, 'Plancha en Suelo', 'Ejercicio isométrico fundamental para el fortalecimiento del core estabilizador.', ['Cuerpo recto desde cabeza a talones', 'Activa abdomen y glúteos', 'Respiración regular', 'Mantén la posición sin temblores'])">
+                <div class="machine-info">🤸‍♂️ Ejercicio: Plancha libre | Enfoque: Core Estabilizador</div>
+                <div class="weight-control">
+                    <label>Tiempo total (segundos): </label>
+                    <input type="number" placeholder="0" onchange="saveExerciseWeight('plancha_suelo', this.value)">
+                    <span class="weight-history" id="plancha_suelo_history"></span>
+                </div>
+                <p>Mantén tu cuerpo recto desde la cabeza hasta los talones. Activa fuertemente tu abdomen y glúteos.</p>
+            </div>
+            <h3>Enfriamiento (5-10 minutos):</h3>
+            <p>Estiramientos suaves para todo el cuerpo y técnicas de respiración para ayudar a la recuperación post-cardio.</p>
+            <div class="check-container">
+                <span class="check-label">Completado:</span>
+                <div class="check-box" onclick="toggleCheck(this, 4)"></div>
+            </div>
+        </div>
+
+        <div id="Day5" class="tabcontent">
+            <h2>Día 5: Full Body & HIIT / Recuperación Activa</h2>
+            <p>Este día es flexible. Puedes usarlo para un entrenamiento de cuerpo completo más ligero, HIIT intenso, o recuperación activa.</p>
+            <div class="exercise">
+                <h4>Circuito Full Body - 3-4 rondas (45 seg trabajo / 15 seg descanso):</h4>
+                <img src="https://via.placeholder.com/300x200/1a1a1a/ff3e3e?text=Circuito+Full+Body" alt="Circuito Full Body" class="exercise-image" onclick="openImageModal(this, 'Circuito Full Body', 'Entrenamiento completo que combina ejercicios de fuerza y cardio para todo el cuerpo.', ['Smith Machine Squats', 'Press de Hombros Matrix', 'Remo con Cable Matrix', 'Step-ups en Banco', 'Battle Ropes o Burpees'])">
+                <div class="weight-control">
+                    <label>Rondas completadas: </label>
+                    <input type="number" max="4" placeholder="0" onchange="saveExerciseWeight('full_body_circuit', this.value)">
+                    <span class="weight-history" id="full_body_circuit_history"></span>
+                </div>
+                <p>Realiza cada ejercicio por 45 segundos con 15 segundos de descanso entre ejercicios. Descansa 2 minutos entre rondas.</p>
+            </div>
+            <h3>Enfriamiento (10 minutos):</h3>
+            <p>Estiramientos completos de todo el cuerpo, enfocándote en las áreas de mayor tensión.</p>
+            <div class="check-container">
+                <span class="check-label">Completado:</span>
+                <div class="check-box" onclick="toggleCheck(this, 5)"></div>
+            </div>
+        </div>
+
+        <div id="WeightTracker" class="tabcontent">
+            <h2>Control de Peso & Progreso</h2>
+            
+            <!-- Calculadora IMC y Grasa Corporal -->
+            <div class="bmi-calculator">
+                <h3>📊 Calculadora de IMC y Composición Corporal</h3>
+                <div style="margin-bottom: 20px;">
+                    <label style="margin-right: 15px;">Peso actual (kg):</label>
+                    <input type="number" step="0.1" id="currentWeight" placeholder="70.0" onchange="calculateBMI()">
+                    <span style="margin-left: 20px; color: var(--text-secondary);">Altura: 1.74m (fija)</span>
+                </div>
+                
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h4>🎯 Índice de Masa Corporal</h4>
+                        <div class="bmi-result" id="bmiResult">--</div>
+                        <div class="bmi-category" id="bmiCategory">Ingresa tu peso</div>
+                    </div>
+                    
+                    <div class="calculator-card">
+                        <h4>📏 Peso Ideal Recomendado</h4>
+                        <div style="font-size: 1.2rem; margin: 10px 0;">
+                            <strong>Rango saludable:</strong><br>
+                            <span style="color: var(--accent-color);">55.8 - 75.4 kg</span>
+                        </div>
+                        <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                            Peso ideal: ~65.6 kg
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-card">
+                        <h4>🔥 Estimación de Grasa Corporal</h4>
+                        <div class="body-fat-result" id="bodyFatResult">--</div>
+                        <div style="font-size: 0.9rem; color: var(--text-secondary);" id="bodyFatCategory">
+                            Basado en IMC y perfil atlético
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-card">
+                        <h4>⚡ Metabolismo Basal</h4>
+                        <div style="font-size: 1.3rem; margin: 10px 0;" id="bmrResult">
+                            <span style="color: var(--primary-color);">-- kcal/día</span>
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary);">
+                            Calorías necesarias en reposo
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 30px; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 12px;">
+                <h3>Objetivo: Tonificación + Ganancia Muscular + Pérdida de Grasa</h3>
+                <p>Meta semanal de peso: Apunta a una pérdida de 0.5 a 1 kg por semana de forma saludable, mientras te enfocas en mantener o aumentar tu fuerza en las máquinas. Recuerda que ganar músculo puede ralentizar la pérdida de peso en la báscula, pero mejorará tu composición corporal.</p>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Semana</th>
+                        <th>Peso Objetivo (kg)</th>
+                        <th>Peso Actual (kg)</th>
+                        <th>IMC</th>
+                        <th>Diferencia</th>
+                        <th>% Grasa Est.</th>
+                    </tr>
+                </thead>
+                <tbody id="weightTableBody">
+                    <tr>
+                        <td>Semana 1</td>
+                        <td>-0.5 a -1</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(1, this.value); updateWeightRow(1, this.value)"></td>
+                        <td id="bmi1">--</td>
+                        <td id="diff1">--</td>
+                        <td id="fat1">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 2</td>
+                        <td>-1 a -2</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(2, this.value); updateWeightRow(2, this.value)"></td>
+                        <td id="bmi2">--</td>
+                        <td id="diff2">--</td>
+                        <td id="fat2">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 3</td>
+                        <td>-1.5 a -3</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(3, this.value); updateWeightRow(3, this.value)"></td>
+                        <td id="bmi3">--</td>
+                        <td id="diff3">--</td>
+                        <td id="fat3">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 4</td>
+                        <td>-2 a -4</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(4, this.value); updateWeightRow(4, this.value)"></td>
+                        <td id="bmi4">--</td>
+                        <td id="diff4">--</td>
+                        <td id="fat4">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 5</td>
+                        <td>-2.5 a -5</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(5, this.value); updateWeightRow(5, this.value)"></td>
+                        <td id="bmi5">--</td>
+                        <td id="diff5">--</td>
+                        <td id="fat5">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 6</td>
+                        <td>-3 a -6</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(6, this.value); updateWeightRow(6, this.value)"></td>
+                        <td id="bmi6">--</td>
+                        <td id="diff6">--</td>
+                        <td id="fat6">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 7</td>
+                        <td>-3.5 a -7</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(7, this.value); updateWeightRow(7, this.value)"></td>
+                        <td id="bmi7">--</td>
+                        <td id="diff7">--</td>
+                        <td id="fat7">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 8</td>
+                        <td>-4 a -8</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(8, this.value); updateWeightRow(8, this.value)"></td>
+                        <td id="bmi8">--</td>
+                        <td id="diff8">--</td>
+                        <td id="fat8">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 9</td>
+                        <td>-4.5 a -9</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(9, this.value); updateWeightRow(9, this.value)"></td>
+                        <td id="bmi9">--</td>
+                        <td id="diff9">--</td>
+                        <td id="fat9">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 10</td>
+                        <td>-5 a -10</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(10, this.value); updateWeightRow(10, this.value)"></td>
+                        <td id="bmi10">--</td>
+                        <td id="diff10">--</td>
+                        <td id="fat10">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 11</td>
+                        <td>-5.5 a -11</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(11, this.value); updateWeightRow(11, this.value)"></td>
+                        <td id="bmi11">--</td>
+                        <td id="diff11">--</td>
+                        <td id="fat11">--</td>
+                    </tr>
+                    <tr>
+                        <td>Semana 12</td>
+                        <td>-6 a -12</td>
+                        <td><input type="number" step="0.1" onchange="saveWeight(12, this.value); updateWeightRow(12, this.value)"></td>
+                        <td id="bmi12">--</td>
+                        <td id="diff12">--</td>
+                        <td id="fat12">--</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 30px; padding: 20px; background: rgba(0, 255, 255, 0.1); border-radius: 12px; border: 1px solid var(--accent-color);">
+                <h3>💡 Consejos para Athletic Gym:</h3>
+                <ul>
+                    <li>Las máquinas Matrix suelen tener instrucciones visuales. Obsérvalas para la configuración inicial.</li>
+                    <li>Ajusta siempre el asiento y los puntos de apoyo de las máquinas para que se adapten a tu cuerpo antes de cada serie.</li>
+                    <li>En horas pico (generalmente en la tarde, después de las 5 PM), sé flexible y ten 1-2 ejercicios alternativos por si tu máquina preferida está ocupada.</li>
+                    <li>¡Usa tu toalla en todas las máquinas y límpialas después de usarlas! Es una norma común del gimnasio.</li>
+                    <li>Si hay mucha gente en la zona cardio, respeta el límite de tiempo (usualmente 20-30 minutos) para que todos puedan usar las máquinas.</li>
+                    <li>No dudes en pedir orientación al personal del gimnasio si no estás seguro de cómo usar una máquina o si necesitas un ajuste. ¡Están para ayudarte!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
